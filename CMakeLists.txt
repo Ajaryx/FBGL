@@ -18,6 +18,7 @@ set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
 
 message(STATUS "library output path set to " ${LIBRARY_OUTPUT_DIRECTORY})
 
+
 #options
 option(FBGL_STATIC "Build FBGL static" ON)
 option(FBGL_SHARED "Build FBGL shared" OFF)
