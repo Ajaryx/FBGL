@@ -35,7 +35,9 @@ endif()
 
 add_subdirectory(${LIBRARY_SOURCES_DIR})
 add_subdirectory(${LIBRARY_INCLUDES_DIR})
-add_subdirectory(tests)
+
 
 #link to include dir glew
-target_include_directories(${LIBRARY_NAME} PRIVATE ${GLEW_INCLUDES_DIR})
+target_include_directories(${LIBRARY_NAME} PUBLIC ${GLEW_INCLUDES_DIR})
+
+add_subdirectory(tests)
