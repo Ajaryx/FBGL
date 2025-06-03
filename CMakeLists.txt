@@ -25,18 +25,30 @@ set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
 
 message(STATUS "library output path set to " ${LIBRARY_OUTPUT_DIRECTORY})
 
+
+find_package(Python3 COMPONENTS Interpreter REQUIRED)
+find_program(CLANGTIDY clang-tidy)
 find_package(OpenGL REQUIRED)
 
 #options
-option(FBGL_STATIC "Build FBGL static" OFF)
-option(FBGL_SHARED "Build FBGL shared" ON)
+option(FBGL_STATIC "Build FBGL static" ON)
+option(FBGL_SHARED "Build FBGL shared" OFF)
+option(ENABLE_BUILD_LIB_TESTS "Build Tests" ON)
+option(ENABLE_COMPILER_WARNING "turn on compiler Warnings for FGGL" ON)
+option(ENABLE_SANITIZER_ADDR "Enable address sanitizer" ON)
+option(ENABLE_SANITIZER_UNDEF "Enable unfefined sanitizer" ON)
+option(ENABLE_CLANG_TIDY "Enable clang-tidy" OFF)
+option(ENABLE_CLANG_FORMAT "Enable clang-format" ON)
 
 #compile glew
 include(CompileGLEWLib)
 compile_glew_lib(${GLEW_LIB_SOURCES})
 target_include_directories(${GLEW_LIB} PRIVATE ${GLEW_INCLUDES_DIR})
 
-
+#include sanitizre if enabled
+if(ENABLE_SANITIZER_ADDR AND ENABLE_SANITIZER_UNDEF)
+include(Sanitizer)
+endif()
 
 
 if(NOT FBGL_STATIC AND NOT FBGL_SHARED)
@@ -50,6 +62,21 @@ endif()
 
 add_subdirectory(${LIBRARY_SOURCES_DIR})
 
+if(ENABLE_COMPILER_WARNING)
+include(CompilerWarnings)
+add_target_sanitizer(${LIBRARY_NAME})
+endif()
+
+if(ENABLE_CLANG_TIDY)
+include(ClangTidy)
+add_target_clang_tidy(${LIBRARY_NAME})
+endif()
+
+
+if(ENABLE_CLANG_FORMAT)
+include(ClangFormat)
+add_format_target()
+endif()
 
 #link to glew target
 #MSVC
@@ -67,6 +94,12 @@ elseif(CMAKE_CXX_COMPILER_ID MATCHES "GNU" OR CMAKE_CXX_COMPILER_ID MATCHES "Cla
 
 endif()
 
+add_target_compiler_warnings(${LIBRARY_NAME})
+
 
 #link to include dir glew and lib dir
 target_include_directories(${LIBRARY_NAME} PRIVATE ${GLEW_INCLUDES_DIR} ${LIBRARY_INCLUDES_DIR})
+
+if(ENABLE_BUILD_LIB_TESTS)
+add_subdirectory(tests)
+endif()

@@ -9,7 +9,7 @@ endif()
 if(FBGL_STATIC)
 
 add_library(${LIBRARY_NAME} STATIC ${LIBRARY_SOURCES})
-
+ target_compile_definitions(${LIBRARY_NAME} PRIVATE FBGL_STATIC)
  set_target_properties(${LIBRARY_NAME} PROPERTIES
         RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin
         ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/lib
