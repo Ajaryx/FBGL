@@ -32,20 +32,3 @@ if(FBGL_SHARED)
     message("FBGL SHARED BUILD")
 
 endif()
-
-
-#init glew
-#MSVC
-if(CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
-
-    target_link_libraries(${LIBRARY_NAME} PRIVATE ${GLEW_LIB_DIR}/glew32s.lib)
-    message(STATUS "LINKED WITH glew32s.lib")
-
-    #clang gcc
-    elseif(CMAKE_CXX_COMPILER_ID MATCHES "GNU" OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
-
-    target_link_libraries(${LIBRARY_NAME} PRIVATE ${GLEW_LIB_DIR}/libGLEW.a)
-
-    message(STATUS "LINKED WITH libGLEW.a")
-
-endif()
