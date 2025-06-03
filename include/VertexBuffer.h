@@ -1,8 +1,9 @@
 #include <GL/glew.h>
+#include "FBGL_Export.h"
 
 
 
-class VertexBuffer
+class FBGL_API VertexBuffer
 {
 public:
     VertexBuffer();
