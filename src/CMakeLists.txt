@@ -1,4 +1,4 @@
-set(LIBRARY_SOURCES "VertexBuffer.cpp")
+set(LIBRARY_SOURCES "VertexBuffer.cpp" "Shader.cpp")
 
 if(NOT DEFINED LIBRARY_NAME)
 message(FATAL_ERROR "LIBRARY_NAME is undefined")

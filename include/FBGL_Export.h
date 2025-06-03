@@ -1,3 +1,5 @@
+#pragma once
+
 #ifdef _WIN32
 
 #ifdef FBGL_STATIC
