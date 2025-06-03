@@ -33,7 +33,7 @@ find_package(OpenGL REQUIRED)
 #options
 option(FBGL_STATIC "Build FBGL static" ON)
 option(FBGL_SHARED "Build FBGL shared" OFF)
-option(ENABLE_BUILD_LIB_TESTS "Build Tests" ON)
+option(ENABLE_BUILD_LIB_TESTS "Build Tests" OFF)
 option(ENABLE_COMPILER_WARNING "turn on compiler Warnings for FGGL" ON)
 option(ENABLE_SANITIZER_ADDR "Enable address sanitizer" ON)
 option(ENABLE_SANITIZER_UNDEF "Enable unfefined sanitizer" ON)
