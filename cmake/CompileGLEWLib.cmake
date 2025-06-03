@@ -19,4 +19,12 @@ message(STATUS "GLEW LIB SHARED BUILD")
 endif()
 
 target_link_libraries(${GLEW_LIB} PUBLIC OpenGL::GL)
+
+
+   set_target_properties(${GLEW_LIB} PROPERTIES
+        RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin
+        ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib
+        LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib
+    )
+
 endfunction(compile_glew_lib)

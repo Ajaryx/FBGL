@@ -28,8 +28,8 @@ message(STATUS "library output path set to " ${LIBRARY_OUTPUT_DIRECTORY})
 find_package(OpenGL REQUIRED)
 
 #options
-option(FBGL_STATIC "Build FBGL static" ON)
-option(FBGL_SHARED "Build FBGL shared" OFF)
+option(FBGL_STATIC "Build FBGL static" OFF)
+option(FBGL_SHARED "Build FBGL shared" ON)
 
 #compile glew
 include(CompileGLEWLib)
