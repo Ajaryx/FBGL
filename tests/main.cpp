@@ -84,7 +84,7 @@ int main()
 
 
 
-    Shader shader("../../Shader/basic.vert", "../../Shader/basic.frag");
+    Shader shader("", "");
 
 
     uint64_t perfCounterFreq = SDL_GetPerformanceFrequency();
