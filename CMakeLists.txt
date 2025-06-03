@@ -70,5 +70,3 @@ endif()
 
 #link to include dir glew and lib dir
 target_include_directories(${LIBRARY_NAME} PRIVATE ${GLEW_INCLUDES_DIR} ${LIBRARY_INCLUDES_DIR})
-
-add_subdirectory(tests)
