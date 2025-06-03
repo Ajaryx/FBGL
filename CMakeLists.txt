@@ -19,6 +19,7 @@ set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
 message(STATUS "library output path set to " ${LIBRARY_OUTPUT_DIRECTORY})
 
 find_package(OpenGL REQUIRED)
+find_package(GLEW REQUIRED)
 
 #options
 option(FBGL_STATIC "Build FBGL static" OFF)
@@ -34,10 +35,9 @@ set(FBGL_SHARED OFF)
 endif()
 
 add_subdirectory(${LIBRARY_SOURCES_DIR})
-add_subdirectory(${LIBRARY_INCLUDES_DIR})
 
 
-#link to include dir glew
-target_include_directories(${LIBRARY_NAME} PUBLIC ${GLEW_INCLUDES_DIR})
+#link to include dir glew and lib dir
+target_include_directories(${LIBRARY_NAME} PRIVATE ${GLEW_INCLUDES_DIR} ${LIBRARY_INCLUDES_DIR})
 
 add_subdirectory(tests)
