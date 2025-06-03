@@ -84,7 +84,7 @@ add_target_compiler_warnings(${LIBRARY_NAME})
 
 
 #link to include dir glew and lib dir
-target_include_directories(${LIBRARY_NAME} PRIVATE ${GLEW_INCLUDES_DIR} ${LIBRARY_INCLUDES_DIR})
+target_include_directories(${LIBRARY_NAME} PUBLIC ${GLEW_INCLUDES_DIR} ${LIBRARY_INCLUDES_DIR})
 
 if(ENABLE_BUILD_LIB_TESTS)
 add_subdirectory(tests)
