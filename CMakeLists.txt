@@ -78,22 +78,8 @@ include(ClangFormat)
 add_format_target()
 endif()
 
-#link to glew target
-#MSVC
-if(CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
 
-    target_link_libraries(${LIBRARY_NAME} PRIVATE ${GLEW_LIB} OpenGL::GL)
-    message(STATUS "LINKED WITH GLEW")
-
-    #clang gcc
-elseif(CMAKE_CXX_COMPILER_ID MATCHES "GNU" OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
-
-    target_link_libraries(${LIBRARY_NAME} PRIVATE ${GLEW_LIB} OpenGL::GL)
-
-    message(STATUS "LINKED WITH GLEW")
-
-endif()
-
+target_link_libraries(${LIBRARY_NAME} PRIVATE ${GLEW_LIB} OpenGL::GL)
 add_target_compiler_warnings(${LIBRARY_NAME})
 
 
