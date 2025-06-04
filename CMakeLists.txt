@@ -34,12 +34,12 @@ option(FBGL_STATIC "Build FBGL static" ON)
 option(FBGL_SHARED "Build FBGL shared" OFF)
 
 #when release turn build test and compiler warnings default OFF
-set(ENABLE_BUILD_LIB_TESTS ON)
-option(ENABLE_COMPILER_WARNING "turn on compiler Warnings for FGGL" ON)
+set(ENABLE_BUILD_LIB_TESTS OFF)
+option(ENABLE_COMPILER_WARNING "turn on compiler Warnings for FGGL" OFF)
 
 #when my testing is done I have to turn it on OFF
-option(ENABLE_SANITIZER_ADDR "Enable address sanitizer" ON)
-option(ENABLE_SANITIZER_UNDEF "Enable unfefined sanitizer" ON)
+option(ENABLE_SANITIZER_ADDR "Enable address sanitizer" OFF)
+option(ENABLE_SANITIZER_UNDEF "Enable unfefined sanitizer" OFF)
 
 # Enable clang-tidy
 set(ENABLE_CLANG_TIDY OFF)
