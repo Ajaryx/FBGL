@@ -1,10 +1,9 @@
-#include "VertexBuffer.hpp"
+#include "VertexBuffer2D.hpp"
 #include <iostream>
 
-VertexBuffer2D::VertexBuffer2D(uint32_t numVerts, GLenum target, GLenum usage, Vertex2D* data)
+VertexBuffer2D::VertexBuffer2D(uint32_t numVerts, GLenum usage, Vertex2D* data)
 {
     this->m_numVerts = numVerts;
-    this->m_target = target;
     this->m_usage = usage;
     this->m_data = data;
 
@@ -25,9 +24,9 @@ void VertexBuffer2D::CreateVertexBuffer()
     glBindVertexArray(m_vao);
 
     glGenBuffers(1, &m_bufferID);
-    glBindBuffer(m_target, m_bufferID);
+    glBindBuffer(GL_ARRAY_BUFFER, m_bufferID);
 
-    glBufferData(m_target, m_numVerts * sizeof(Vertex2D), static_cast<void*>(m_data), m_usage);
+    glBufferData(GL_ARRAY_BUFFER, m_numVerts * sizeof(Vertex2D), static_cast<void*>(m_data), m_usage);
 
     glEnableVertexAttribArray(0);
     glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex2D), reinterpret_cast<void*>(offsetof(struct Vertex2D, x)));
@@ -45,5 +44,5 @@ void VertexBuffer2D::bind()
 void VertexBuffer2D::unbind()
 {
     glBindVertexArray(0);
-    glBindBuffer(m_target, 0);
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
 }

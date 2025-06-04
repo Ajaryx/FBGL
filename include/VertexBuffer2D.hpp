@@ -1,13 +1,12 @@
-#include <GL/glew.h>
+#pragma once
 
-#include "FBGL_Export.hpp"
-#include "defines.hpp"
+#include "FBGL.hpp"
 
 
 class FBGL_API VertexBuffer2D
 {
 public:
-    VertexBuffer2D(uint32_t numVerts, GLenum target, GLenum usage, Vertex2D* data);
+    VertexBuffer2D(uint32_t numVerts, GLenum usage, Vertex2D* data);
     ~VertexBuffer2D();
 
 
@@ -29,10 +28,7 @@ public:
     {
         return m_numVerts;
     }
-    inline GLenum GetTarget() const
-    {
-        return m_target;
-    }
+
     inline GLenum GetUsage() const
     {
         return m_usage;
@@ -53,7 +49,6 @@ private:
     GLuint m_vao;
 
     uint32_t m_numVerts;
-    GLenum m_target;
     GLenum m_usage;
     Vertex2D* m_data;
 

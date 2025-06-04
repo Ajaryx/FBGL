@@ -1,7 +1,6 @@
 #pragma once
 
-#include "FBGL_Export.hpp"
-#include "defines.hpp"
+#include "FBGL.hpp"
 
 class FBGL_API Shader
 {

@@ -31,15 +31,15 @@ find_package(OpenGL REQUIRED)
 
 #options for the user
 option(FBGL_STATIC "Build FBGL static" ON)
-option(FBGL_SHARED "Build FBGL shared" OFFc)
+option(FBGL_SHARED "Build FBGL shared" OFF)
 
 #when release turn build test and compiler warnings default OFF
-set(ENABLE_BUILD_LIB_TESTS OFF)
-option(ENABLE_COMPILER_WARNING "turn on compiler Warnings for FGGL" OFF)
+set(ENABLE_BUILD_LIB_TESTS ON)
+option(ENABLE_COMPILER_WARNING "turn on compiler Warnings for FGGL" ON)
 
 #when my testing is done I have to turn it on OFF
-option(ENABLE_SANITIZER_ADDR "Enable address sanitizer" OFF)
-option(ENABLE_SANITIZER_UNDEF "Enable unfefined sanitizer" OFF)
+option(ENABLE_SANITIZER_ADDR "Enable address sanitizer" ON)
+option(ENABLE_SANITIZER_UNDEF "Enable unfefined sanitizer" ON)
 
 # Enable clang-tidy
 set(ENABLE_CLANG_TIDY OFF)
@@ -51,11 +51,7 @@ include(CompileGLEWLib)
 compile_glew_lib(${GLEW_LIB_SOURCES})
 target_include_directories(${GLEW_LIB} PRIVATE ${GLEW_INCLUDES_DIR})
 
-#include sanitizre if enabled
-if(ENABLE_SANITIZER_ADDR AND ENABLE_SANITIZER_UNDEF)
-include(Sanitizer)
-add_target_sanitizer(${LIBRARY_NAME})
-endif()
+
 
 #check if both build flags are on and check if both are off
 if(NOT FBGL_STATIC AND NOT FBGL_SHARED)
@@ -69,6 +65,11 @@ endif()
 
 add_subdirectory(${LIBRARY_SOURCES_DIR})
 
+#include sanitizre if enabled
+if(ENABLE_SANITIZER_ADDR AND ENABLE_SANITIZER_UNDEF)
+include(Sanitizer)
+add_target_sanitizer(${LIBRARY_NAME})
+endif()
 
 
 

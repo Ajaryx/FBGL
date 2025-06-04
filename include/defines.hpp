@@ -1,9 +1,7 @@
 #pragma once
 #include "FBGL_Export.hpp"
-#include <iostream>
-#include <string>
-#include <GL/glew.h>
-#include <fstream>
+
+
 
 struct FBGL_API Vertex2D
 {

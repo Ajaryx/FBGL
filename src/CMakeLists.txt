@@ -1,4 +1,4 @@
-set(LIBRARY_SOURCES "VertexBuffer.cpp" "Shader.cpp")
+set(LIBRARY_SOURCES "VertexBuffer2D.cpp" "IndexBuffer2D.cpp" "Shader.cpp")
 
 if(NOT DEFINED LIBRARY_NAME)
 message(FATAL_ERROR "LIBRARY_NAME is undefined")
@@ -32,7 +32,7 @@ if(FBGL_SHARED)
     target_compile_definitions(${LIBRARY_NAME} PRIVATE FBGL_BUILD_DLL)
 
     set_target_properties(${LIBRARY_NAME} PROPERTIES
-        ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin/shared
+        ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/lib/shared
         LIBRARY_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/lib/shared
         RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin/shared
     )

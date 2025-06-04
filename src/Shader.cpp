@@ -72,6 +72,7 @@ std::string Shader::parse(const std::string& filePath)
     if(src.empty())
     {
         std::cerr << "Shader Source Code: " << filePath << " is empty!\n";
+        lastError = "Shader Source Code: " + filePath + " is empty!\n";
         m_ShaderState |= ShaderState::EES_SHADER_NO_SRC;
     }
 

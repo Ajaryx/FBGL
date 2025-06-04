@@ -31,7 +31,7 @@ endif()
     target_link_libraries(${GLEW_LIB} PRIVATE OpenGL::GL)
 
     set_target_properties(${GLEW_LIB} PROPERTIES
-            ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin/shared
+            ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/lib/shared
             LIBRARY_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/lib/shared
             RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin/shared
         )
