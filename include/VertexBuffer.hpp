@@ -1,7 +1,7 @@
 #include <GL/glew.h>
 
-#include "FBGL_Export.h"
-#include "defines.h"
+#include "FBGL_Export.hpp"
+#include "defines.hpp"
 
 
 class FBGL_API VertexBuffer2D

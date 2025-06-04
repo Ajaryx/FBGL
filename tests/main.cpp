@@ -2,13 +2,15 @@
 #include <SDL3/SDL.h>
 #include <cmath>
 
-#include "VertexBuffer.h"
-#include "Shader.h"
+#include "VertexBuffer.hpp"
+#include "Shader.hpp"
+#include <glm/glm.hpp>
+#include <glm/ext.hpp>
 
 void GL_Error_Callback(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei lenght, const GLchar* message, const void* userParam)
 {
     if(severity == GL_DEBUG_SEVERITY_MEDIUM || severity == GL_DEBUG_SEVERITY_HIGH)
-    std::cout << "[OPEN_GL ERROR]: " << message << '\n';
+    std::cerr << "[OPEN_GL ERROR]: " << message << '\n';
 }
 
 
@@ -84,14 +86,17 @@ int main()
 
 
 
-    Shader shader("", "");
+    Shader shader("Test_Shader", "../Shader/basic.vert", "../Shader/basic.frag");
 
 
     uint64_t perfCounterFreq = SDL_GetPerformanceFrequency();
     uint64_t lastCounter = SDL_GetPerformanceCounter();
     float deltaTime = 0.f;
     std::cout.sync_with_stdio(false);
-
+shader.bind();
+    int loc = shader.GetUnfiformLocation("u_viewProjection");
+    glm::mat4 m = glm::mat4(1.f);
+    glUniformMatrix4fv(loc, 1, GL_FALSE, &m[0][0]);
 
     while (ShouldRun)
     {

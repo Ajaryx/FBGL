@@ -1,7 +1,9 @@
 function(add_format_target)
 
 file(GLOB_RECURSE CMAKE_FILES_CPP "*/*.cpp")
-file(GLOB_RECURSE CMAKE_FILES_H "*/*.h")
+file(GLOB_RECURSE CMAKE_FILES_H "*/*.hpp")
+
+find_package(Python3 COMPONENTS Interpreter REQUIRED)
 
 set(CPP_FILES
 ${CMAKE_FILES_CPP}

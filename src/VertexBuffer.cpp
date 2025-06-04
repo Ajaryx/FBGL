@@ -1,4 +1,4 @@
-#include "VertexBuffer.h"
+#include "VertexBuffer.hpp"
 #include <iostream>
 
 VertexBuffer2D::VertexBuffer2D(uint32_t numVerts, GLenum target, GLenum usage, Vertex2D* data)
@@ -13,6 +13,10 @@ VertexBuffer2D::VertexBuffer2D(uint32_t numVerts, GLenum target, GLenum usage, V
 
 VertexBuffer2D::~VertexBuffer2D()
 {
+
+    bind();
+    glDeleteBuffers(1, &m_bufferID);
+
 }
 
 void VertexBuffer2D::CreateVertexBuffer()

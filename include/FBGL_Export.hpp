@@ -14,6 +14,6 @@
 
 #else
 
-#define FBGL_API __attribute__((visibility("default")))
+#define FBGL_API
 
 #endif

@@ -4,29 +4,37 @@ function(compile_glew_lib GLEW_SOURCES)
 message(STATUS "trying to build GLEW...")
 
 if(FBGL_STATIC)
-add_library(${GLEW_LIB} STATIC ${GLEW_SOURCES})
+    add_library(${GLEW_LIB} STATIC ${GLEW_SOURCES})
+    target_link_libraries(${GLEW_LIB} PRIVATE OpenGL::GL)
 
-message(STATUS ${GLEW_SOURCE_DIR})
+    target_compile_definitions(${GLEW_LIB} PRIVATE GLEW_STATIC)
 
-target_compile_definitions(${GLEW_LIB} PRIVATE GLEW_STATIC)
-message(STATUS "GLEW LIB STATIC BUILD")
+    set_target_properties(${GLEW_LIB} PROPERTIES
+            ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/lib/static
+            LIBRARY_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/lib/static
+        )
+
+    message(STATUS ${GLEW_SOURCE_DIR})
+
+
+    message(STATUS "GLEW LIB STATIC BUILD")
 endif()
 
 
-if(FBGL_SHARED)
-add_library(${GLEW_LIB} SHARED ${GLEW_SOURCES})
+    if(FBGL_SHARED)
+    add_library(${GLEW_LIB} SHARED ${GLEW_SOURCES})
 
-target_compile_definitions(${GLEW_LIB} PRIVATE GLEW_BUILD)
-message(STATUS "GLEW LIB SHARED BUILD")
+    target_compile_definitions(${GLEW_LIB} PRIVATE GLEW_BUILD)
+    message(STATUS "GLEW LIB SHARED BUILD")
+
+
+    target_link_libraries(${GLEW_LIB} PRIVATE OpenGL::GL)
+
+    set_target_properties(${GLEW_LIB} PROPERTIES
+            ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/lib/shared
+            LIBRARY_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/lib/shared
+        )
+
 endif()
-
-target_link_libraries(${GLEW_LIB} PRIVATE OpenGL::GL)
-
-
-   set_target_properties(${GLEW_LIB} PROPERTIES
-        RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin
-        ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/lib
-        LIBRARY_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/lib
-    )
 
 endfunction(compile_glew_lib)

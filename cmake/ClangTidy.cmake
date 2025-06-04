@@ -4,6 +4,10 @@ if(NOT ENABLE_CLANG_TIDY)
 return()
 endif()
 
+find_package(Python3 COMPONENTS Interpreter REQUIRED)
+
+message(STATUS "Enabled Clang tidy")
+
 if(CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
 message(STATUS "ignoring clang-tidy for MSVC")
 return()

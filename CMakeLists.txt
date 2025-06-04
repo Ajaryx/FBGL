@@ -26,19 +26,25 @@ set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
 message(STATUS "library output path set to " ${LIBRARY_OUTPUT_DIRECTORY})
 
 
-find_package(Python3 COMPONENTS Interpreter REQUIRED)
 find_program(CLANGTIDY clang-tidy)
 find_package(OpenGL REQUIRED)
 
-#options
+#options for the user
 option(FBGL_STATIC "Build FBGL static" ON)
 option(FBGL_SHARED "Build FBGL shared" OFF)
-option(ENABLE_BUILD_LIB_TESTS "Build Tests" OFF)
+
+#when release turn build test and compiler warnings default OFF
+set(ENABLE_BUILD_LIB_TESTS OFF)
 option(ENABLE_COMPILER_WARNING "turn on compiler Warnings for FGGL" ON)
+
+#when my testing is done I have to turn it on OFF
 option(ENABLE_SANITIZER_ADDR "Enable address sanitizer" ON)
 option(ENABLE_SANITIZER_UNDEF "Enable unfefined sanitizer" ON)
-option(ENABLE_CLANG_TIDY "Enable clang-tidy" OFF)
-option(ENABLE_CLANG_FORMAT "Enable clang-format" OFF)
+
+# Enable clang-tidy
+set(ENABLE_CLANG_TIDY OFF)
+# Enable clang-format
+set(ENABLE_CLANG_FORMAT OFF)
 
 #compile glew
 include(CompileGLEWLib)
@@ -50,17 +56,18 @@ if(ENABLE_SANITIZER_ADDR AND ENABLE_SANITIZER_UNDEF)
 include(Sanitizer)
 endif()
 
-
+#check if both build flags are on and check if both are off
 if(NOT FBGL_STATIC AND NOT FBGL_SHARED)
 set(FBGL_STATIC ON)
-message(STATUS "Static and Shared build time are both off.. set default build type to static")
+message(STATUS "Static and Shared build time are both off.. set default build type to static...")
 elseif(FBGL_STATIC AND FBGL_SHARED)
-message(STATUS "Static and Shared build time are both ON.. set default build type to static")
+message(STATUS "Static and Shared build time are both ON.. set default build type to static...")
 set(FBGL_STATIC ON)
 set(FBGL_SHARED OFF)
 endif()
 
 add_subdirectory(${LIBRARY_SOURCES_DIR})
+
 
 if(ENABLE_COMPILER_WARNING)
 include(CompilerWarnings)
