@@ -31,7 +31,7 @@ find_package(OpenGL REQUIRED)
 
 #options for the user
 option(FBGL_STATIC "Build FBGL static" ON)
-option(FBGL_SHARED "Build FBGL shared" OFF)
+option(FBGL_SHARED "Build FBGL shared" OFFc)
 
 #when release turn build test and compiler warnings default OFF
 set(ENABLE_BUILD_LIB_TESTS OFF)

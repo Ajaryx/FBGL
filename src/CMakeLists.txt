@@ -32,8 +32,9 @@ if(FBGL_SHARED)
     target_compile_definitions(${LIBRARY_NAME} PRIVATE FBGL_BUILD_DLL)
 
     set_target_properties(${LIBRARY_NAME} PROPERTIES
-        ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/lib/shared
+        ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin/shared
         LIBRARY_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/lib/shared
+        RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin/shared
     )
 
     message("FBGL SHARED BUILD")
