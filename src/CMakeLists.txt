@@ -1,4 +1,4 @@
-set(LIBRARY_SOURCES "VertexBuffer2D.cpp" "IndexBuffer2D.cpp" "Shader.cpp")
+set(LIBRARY_SOURCES "VertexBuffer2D.cpp" "IndexBuffer2D.cpp" "Shader.cpp" "Texture2D.cpp")
 
 if(NOT DEFINED LIBRARY_NAME)
 message(FATAL_ERROR "LIBRARY_NAME is undefined")
