@@ -6,3 +6,4 @@
 #include "VertexBuffer2D.hpp"
 #include "Shader.hpp"
 #include "IndexBuffer2D.hpp"
+#include "Texture2D.hpp"
