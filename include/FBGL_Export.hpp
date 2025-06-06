@@ -5,7 +5,6 @@
 #include <string>
 #include <GL/glew.h>
 #include <fstream>
-#include "stb_image.h"
 
 
 #ifdef _WIN32

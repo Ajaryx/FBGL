@@ -1,6 +1,7 @@
 #pragma once
 
 #include "FBGL_Export.hpp"
+#include "stb_image.h"
 
 class FBGL_API Texture2D
 {
