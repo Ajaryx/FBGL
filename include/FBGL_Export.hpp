@@ -1,5 +1,13 @@
 #pragma once
 
+
+#include <iostream>
+#include <string>
+#include <GL/glew.h>
+#include <fstream>
+#include "stb_image.h"
+
+
 #ifdef _WIN32
 
 #ifdef FBGL_STATIC

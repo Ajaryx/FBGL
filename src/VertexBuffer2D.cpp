@@ -34,6 +34,9 @@ void VertexBuffer2D::CreateVertexBuffer()
     glEnableVertexAttribArray(1);
     glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex2D), reinterpret_cast<void*>(offsetof(struct Vertex2D, r)));
 
+    glEnableVertexAttribArray(2);
+    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex2D), reinterpret_cast<void*>(offsetof(struct Vertex2D, u)));
+
     unbind();
 }
 void VertexBuffer2D::bind()

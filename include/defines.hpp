@@ -12,6 +12,9 @@ struct FBGL_API Vertex2D
     float g;
     float b;
     float a;
+
+    float u;
+    float v;
 };
 enum FBGL_API ShaderState : uint8_t
 {

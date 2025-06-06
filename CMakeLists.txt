@@ -34,8 +34,7 @@ option(FBGL_STATIC "Build FBGL static" ON)
 option(FBGL_SHARED "Build FBGL shared" OFF)
 
 #when release turn build test and compiler warnings default OFF
-set(ENABLE_BUILD_LIB_TESTS OFF)
-option(ENABLE_COMPILER_WARNING "turn on compiler Warnings for FGGL" OFF)
+option(ENABLE_COMPILER_WARNING "turn on compiler Warnings for FGGL" ON)
 
 #when my testing is done I have to turn it on OFF
 option(ENABLE_SANITIZER_ADDR "Enable address sanitizer" OFF)
@@ -92,12 +91,9 @@ endif()
 
 
 target_link_libraries(${LIBRARY_NAME} PRIVATE ${GLEW_LIB} OpenGL::GL)
-
+target_compile_definitions(${LIBRARY_NAME} PRIVATE STB_IMAGE_IMPLEMENTATION)
 
 
 #link to include dir glew and lib dir
 target_include_directories(${LIBRARY_NAME} PUBLIC ${GLEW_INCLUDES_DIR} ${LIBRARY_INCLUDES_DIR})
 
-if(ENABLE_BUILD_LIB_TESTS)
-add_subdirectory(tests)
-endif()

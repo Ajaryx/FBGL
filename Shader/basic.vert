@@ -2,13 +2,16 @@
 
 layout(location = 0) in vec2 a_location;
 layout(location = 1) in vec4 a_color;
+layout(location = 2) in vec2 a_texCoord;
 
 uniform mat4 u_viewProjection;
 
 out vec4 of_color;
+out vec2 of_texCoord;
 
 void main()
 {
     gl_Position = u_viewProjection * vec4(a_location, 0.f, 1.f);
     of_color = a_color;
+    of_texCoord = a_texCoord;
 }
