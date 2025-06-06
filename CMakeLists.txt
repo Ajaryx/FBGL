@@ -91,7 +91,7 @@ endif()
 
 
 target_link_libraries(${LIBRARY_NAME} PRIVATE ${GLEW_LIB} OpenGL::GL)
-target_compile_definitions(${LIBRARY_NAME} PRIVATE STB_IMAGE_IMPLEMENTATION)
+target_compile_definitions(${LIBRARY_NAME} PUBLIC STB_IMAGE_IMPLEMENTATION)
 
 
 #link to include dir glew and lib dir
