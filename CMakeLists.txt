@@ -34,7 +34,7 @@ option(FBGL_STATIC "Build FBGL static" ON)
 option(FBGL_SHARED "Build FBGL shared" OFF)
 
 #when release turn build test and compiler warnings default OFF
-option(ENABLE_COMPILER_WARNING "turn on compiler Warnings for FGGL" ON)
+option(ENABLE_COMPILER_WARNING "turn on compiler Warnings for FGGL" OFF)
 
 #when my testing is done I have to turn it on OFF
 option(ENABLE_SANITIZER_ADDR "Enable address sanitizer" OFF)
